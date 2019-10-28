@@ -17,28 +17,51 @@ var_dump($task)
 
 //EX4 : crée une fonction get_status sui prend en argument une "task" et renvoie l'état d'accomplissement 
 
-get_status($task["$done"]);
+function get_status($task){
+return $task["done"];
+}
+var_dump(get_status($task))
 
 
 //EX5 créer un tableau vide das une variable $todo
 
-$todo=[]
+$todo=[];
 
 //EX6  Ajouter la tache task de l'ex3 à la fin du tableau $todo
-$todo=[($task =["title" ==>$title,"done"=>$done])];
+$todo=[$task];
 
 //EX 7 Stocker $todo dans la session (clé "todo")
 
 $_SESSION["todo"]=$todo
 
 //EX 8 Ecrire une boucle foreach pour faire un var_dump des éléments de $todo 
+foreach ($todo as $t ) {
+	var_dump($t);
+}
 
 //EX9 Rajouter d'autres éléments du même type que $task à $todo 
 
+$task2=["title" => "lire un livre","done"=> false];
+$task3["title" => "Manger une pomme","done"=> true];
+
+$todo[] = $task2; // Pour rajouter a la suite , crochet crochet on est pas obliger de réecrire ce qu'il ya à l'interrieur
+$todo[] = $task3;
+
+//UNE AUTRE MANIERE :
+$todo ) [ $task, $task2, $task3];
+
+
+var_dump($todo);
+
 //ex 8bis : verifier que la boucle de l'ex 8 fonctionne toujours 
 
+foreach ($todo as $t ) {
+	var_dump($t);
+}
 //EX10 : afficher dans des <li> les titres des éléments de todo 
 
 //EX11: créer une fonction display_task prenant en paramétre une $task et renvoyant le titre dans une balise span, possédant une class "done"si la classe est faite.
 
 //EX10bis : remplacer l'affichage du titre par l'appel à la fonction display_task 
+
+//EX12 créer un tableau $recycle vide. A l'aide de la fonction array_splice,enlever un élément de votre choix de la variable $todo,placez le dans $recycle.
