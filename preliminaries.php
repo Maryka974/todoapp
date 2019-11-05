@@ -60,14 +60,47 @@ foreach ($todo as $t ) {
 }
 //EX10 : afficher dans des <li> les titres des éléments de todo 
 
-li($task):
+echo"<ul>";
+ // OU AUTRE MANIERE :
+?>
+<H2>Ex 10 </H2>
+<ul>
+	<?php foreach ($todo as $t ): ?>
+	<li>
+		<?php echo $t["title"];?></li>
+	<?php endforeach, ?>
+</ul>
 
+<?php
 
 //EX11: créer une fonction display_task prenant en paramétre une $task et renvoyant le titre dans une balise span, possédant une class "done"si la classe est faite.
 
-display_task{$task("title") return span="done" ;}
-//EX10bis : remplacer l'affichage du titre par l'appel à la fonction display_task 
+function (display_task){$task("title") return span="done" ;}
+//CORRECTION :
 
+Function display_task($task){
+	$done=get_status($task);
+	if($done){
+		$class="done";	
+	}else {
+		$class="";
+	}
+	return "<span class='done'>".$task["title"]."</span";
+}
+
+//EX10bis : remplacer l'affichage du titre par l'appel à la fonction display_task 
+?>
+<H2>Ex 10 </H2>
+<ul>
+	<?php foreach ($todo as $t ): ?>
+	<li>
+		<?php echo display_task($t);?></li>
+	<?php endforeach, ?>
+</ul>
+<style>
+	span.done{text-decoration: line-through;}
+</style>
+<?php
 
 //EX12 créer un tableau $recycle vide. A l'aide de la fonction array_splice,enlever un élément de votre choix de la variable $todo,placez le dans $recycle.
 //J'arrive paaaaas :'('
